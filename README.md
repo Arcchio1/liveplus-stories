@@ -1,14 +1,23 @@
 # liveplus-stories
 
-Artes de stories da Live Plus (1080x1920) para publicação automatizada no Instagram.
+Artes de stories e carrosséis da Live Plus para publicação automatizada no Instagram.
 
-## Registro de peças
+## Estrutura
 
-| Arte | Data de uso | Publicada em | URL de hospedagem (LinkedIn CDN, expira 03/12/2026) |
-|---|---|---|---|
-| countdown_11-11_B.png (v2) | 11/11/2026 12h | IG story (expectativa podcast) | https://media.licdn.com/dms/image/v2/D4D22AQG75TA-EIkF3g/feedshare-shrink_1280/B4DaHKpGUTKIAI-/0/1794401134131?e=1796256000&v=beta&t=c59STnEWiTGiivJPw4kuTv0ocNM7ALdfKgnb1dv8yQ0 |
-| story_ergonomia_12-11.png (v2) | 12/11/2026 19h10 | IG story (chamada do post de ergonomia) | https://media.licdn.com/dms/image/v2/D4D22AQHatWsEj_k8ug/feedshare-shrink_1280/B4DaHKpO8QK0AI-/0/1794401169463?e=1796256000&v=beta&t=1ZSFbTlxdGTV7cOLoN_PlXI_0z9ScmM6ttU_1qkRP4o |
-| story_diabetes_14-11.png | 14/11/2026 19h10 (previsto) | IG story (chamada do post do diabetes) | a hospedar após aprovação |
+- `posts/<tema>/<data>/slideN.png` — slides de carrosséis (1080x1350)
+- `stories/<nome>.png` — artes de story (1080x1920)
+
+## Peças publicadas / agendadas
+
+| Arte | Uso | Publicação |
+|---|---|---|
+| posts/ergonomia/2026-11-12/ (5 slides) | Carrossel de ergonomia (home office) | 12/11/2026 19h |
+| stories/story_ergonomia_12-11.png | Story de chamada do post | 12/11/2026 19h10 |
+| posts/diabetes/2026-11-14/ (5 slides) | Carrossel Dia Mundial do Diabetes | 14/11/2026 19h |
+| stories/story_diabetes_14-11.png | Story de chamada do post | 14/11/2026 19h10 |
+| posts/prostata/2026-11-17/ (6 slides) | Carrossel Dia Mundial de Combate ao Câncer de Próstata | 17/11/2026 19h |
+| stories/story_prostata_17-11.png | Story de chamada do post | 17/11/2026 19h10 |
+| stories/countdown_11-11.png | Story de expectativa do podcast | 11/11/2026 12h |
 
 ## Padrão de stories (fixado pelo usuário em 11/11/2026)
 
@@ -16,10 +25,10 @@ Artes de stories da Live Plus (1080x1920) para publicação automatizada no Inst
 - Site em selo/chip próprio com contorno, separado do CTA por divisor fino, link grande
 - CTA do post com seta apontando para a imagem do post
 - Linguagem humanizada, sem travessão, sem construção "não é X, é Y"
-- Sem palavras órfãs: quebra de texto balanceada, linhas com larguras parecidas (regra de 11/11/2026)
+- Sem palavras órfãs: quebra de texto balanceada, linhas com larguras parecidas
 
-## Fluxo de hospedagem
+## Fluxo de hospedagem (a partir de 11/11/2026)
 
-Os binários não sobem pela API do GitHub disponível. O arquivo é hospedado via
-upload de imagem do LinkedIn (recipe `feedshare-image`, sem publicar post) e a
-URL resultante alimenta o container do IG. Originais ficam em `artifacts/stories/`.
+As artes são enviadas como binário real via Git Data API (blobs + tree + commit)
+usando um PAT do usuário. As URLs permanentes (raw.githubusercontent.com) alimentam
+os containers do IG. O LinkedIn deixa de ser usado como CDN.
